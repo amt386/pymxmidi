@@ -111,9 +111,12 @@ parser.add_argument('-c', '--channels', dest='channels', type=int, nargs='+',
 parser.add_argument('--off', dest='auto_off', action='store_true',
         default=False,
         help='Auto send note-off for all played notes in the end.')
+
+# TODO: do not allow looping if delay is zero
 parser.add_argument('--loop', dest='loop', action='store_true',
         default=False,
         help='Loop event sequence.')
+
 parser.add_argument('-d', '--delay', type=float, dest='delay', default=0.0,
         help='Delay between notes (in seconds, e.g. "-d 0.5").')
 parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
@@ -126,6 +129,9 @@ parser.add_argument('messages', metavar='messages', type=event_data, nargs='+',
 
 
 args = parser.parse_args()
+
+
+# TODO: handle Ctrl+Z
 
 if args.verbose:
     print('CHANNELS: ', args.channels)
